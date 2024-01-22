@@ -122,7 +122,7 @@ function selected(){
         intern();
       } else if (answers.addMore === 'Finish building the team') {
         console.log('Your team profile has been built');
-        inquirer.then(()=> render(output));
+        inquirer.prompt([]).then(() => render(output));
       }
     });
   }
@@ -143,16 +143,5 @@ function intern() {
 
 init();
 
-// function to write README file //this is from last week assignment - shuld not need, just call "render"
-// function writeToHTML(output) {
-//     const addManager = generateManager(output);
-//     const addEngineer = generateEngineer(output);
-//     const addIntern = enerateIntern(output);
-    
-//     fs.writeFile('page-template.js',addManager, addEngineer, addIntern, (err) =>
-//   err ? console.error(err) : console.log('Successfully added team member')
-//       )
-//   };
-  
 
   

@@ -107,10 +107,11 @@ const output = [];
 //Initiilise the programme 
 function init() {
   inquirer.prompt(initialQuestions).then((answers) => {
-    output.push(answers);
+    output.push(answers); 
+    //run selected function to ask menu question
     selected();
-    then(writeToHTML);
-  });
+  })
+  // .then(()=> render(output));
 }
 //2nd set of questions based on who is selected
 function selected(){
@@ -120,10 +121,9 @@ function selected(){
       } else if (answers.addMore === 'Add intern') {
         intern();
       } else if (answers.addMore === 'Finish building the team') {
-        console.log('Your team profile:', output);
+        console.log('Your team profile has been built');
+        inquirer.then(()=> render(output));
       }
-    
-    
     });
   }
 
@@ -143,16 +143,16 @@ function intern() {
 
 init();
 
-// function to write README file //this is from last week assignment - modify
-function writeToHTML(answers) {
-    const addManager = generateManager(answers);
-    const addEngineer = generateEngineer(answers);
-    const addIntern = enerateIntern(answers);
+// function to write README file //this is from last week assignment - shuld not need, just call "render"
+// function writeToHTML(output) {
+//     const addManager = generateManager(output);
+//     const addEngineer = generateEngineer(output);
+//     const addIntern = enerateIntern(output);
     
-      fs.appendFile('page-template.js',addManager, addEngineer, addIntern, (err) =>
-  err ? console.error(err) : console.log('Successfully added team member')
-      )
-  };
+//     fs.writeFile('page-template.js',addManager, addEngineer, addIntern, (err) =>
+//   err ? console.error(err) : console.log('Successfully added team member')
+//       )
+//   };
   
 
   

@@ -15,9 +15,7 @@ Screenshot of working in terminal:
 ![Alt text](<assets/terminal screenshot.png>)
 
 Screenshot of created html page:
-![Alt text](<assets/Screenshot 2024-01-23 at 22.37.31.png>)
-
-
+![Alt text](<assets/HTML screenshot.png>)
 
 ## Installation
 Open Intergrated terminal and type node index.js. 

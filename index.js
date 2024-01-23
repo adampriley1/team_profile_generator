@@ -98,9 +98,14 @@ const allTeamMembers = [];
 //Initiilise the programme
 function init() {
   inquirer.prompt(initialQuestions).then((answers) => {
-    //create manager using inquirer inputs 
-   const newManager = new Manager(answers.getName, answers.getId, answers.getEmail, answers.getOfficeNumber);
-   allTeamMembers.push(newManager)
+    //create manager using inquirer inputs
+    const newManager = new Manager(
+      answers.getName,
+      answers.getId,
+      answers.getEmail,
+      answers.getOfficeNumber
+    );
+    allTeamMembers.push(newManager);
 
     //run selected function to ask question
     selected();
@@ -113,37 +118,46 @@ function selected() {
     //show engineer Q's if engineer selected
     if (answers.addMore === "Add engineer") {
       engineerQs();
-      
-       //show intern Q's if intern selected
+
+      //show intern Q's if intern selected
     } else if (answers.addMore === "Add intern") {
       internQs();
     } else if (answers.addMore === "Finish building the team") {
       console.log("Your team profile has been built");
-     
+
       //write html with output data
       // render(allTeamMembers);
 
       fs.writeFile(outputPath, render(allTeamMembers), function (err) {
         if (err) throw err;
-        console.log('Saved!');
+        console.log("Saved!");
       });
-
     }
   });
 }
 
 function engineerQs() {
   inquirer.prompt(engineerQuestions).then((answers) => {
-    const newEngineer = new Engineer(answers.getName, answers.getId, answers.getEmail, answers.getGithub);
-    allTeamMembers.push(newEngineer)
+    const newEngineer = new Engineer(
+      answers.getName,
+      answers.getId,
+      answers.getEmail,
+      answers.getGithub
+    );
+    allTeamMembers.push(newEngineer);
     selected();
   });
 }
 
 function internQs() {
   inquirer.prompt(internQuestions).then((answers) => {
-    const newIntern = new Intern(answers.getName, answers.getId, answers.getEmail, answers.getSchool);
-    allTeamMembers.push(newIntern)
+    const newIntern = new Intern(
+      answers.getName,
+      answers.getId,
+      answers.getEmail,
+      answers.getSchool
+    );
+    allTeamMembers.push(newIntern);
     selected();
   });
 }

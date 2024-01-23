@@ -113,6 +113,7 @@ function selected() {
     //show engineer Q's if engineer selected
     if (answers.addMore === "Add engineer") {
       engineerQs();
+      
        //show intern Q's if intern selected
     } else if (answers.addMore === "Add intern") {
       internQs();
@@ -122,7 +123,7 @@ function selected() {
       //write html with output data
       // render(allTeamMembers);
 
-      fs.writeFile('./output/teamMembers.html', render(allTeamMembers), function (err) {
+      fs.writeFile(outputPath, render(allTeamMembers), function (err) {
         if (err) throw err;
         console.log('Saved!');
       });
@@ -133,14 +134,16 @@ function selected() {
 
 function engineerQs() {
   inquirer.prompt(engineerQuestions).then((answers) => {
-    output.push(answers);
+    const newEngineer = new Engineer(answers.getName, answers.getId, answers.getEmail, answers.getGithub);
+    allTeamMembers.push(newEngineer)
     selected();
   });
 }
 
 function internQs() {
   inquirer.prompt(internQuestions).then((answers) => {
-    output.push(answers);
+    const newIntern = new Intern(answers.getName, answers.getId, answers.getEmail, answers.getSchool);
+    allTeamMembers.push(newIntern)
     selected();
   });
 }

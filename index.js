@@ -82,7 +82,7 @@ const internQuestions = [
   },
   {
     type: "input",
-    name: "getmail",
+    name: "getEmail",
     message: "Enter interns email",
   },
   {

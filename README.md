@@ -12,24 +12,24 @@ When the user type node index.js into the command line. They will be prompted to
 
 
 Screenshot of working in terminal:
+![Alt text](<assets/terminal screenshot.png>)
+
+Screenshot of created html page:
+![Alt text](<assets/Screenshot 2024-01-23 at 22.37.31.png>)
 
 
-
-Video Demonstration:
-https://vimeo.com/902920946/a8fa26d345?share=copy
 
 ## Installation
-Open Intergrated terminal from the ReadmeGenerator folder
+Open Intergrated terminal and type node index.js. 
 
 
 Application Link:
 
-https://adampriley1.github.io/ReadmeGenerator/
+https://adampriley1.github.io/team_profile_generator/
 
 ## Usage
 
-To run, type 'node index.js' into terminal.
-Answer questions, README file then produced with the name APP_README.md
+Open Intergrated terminal and type 'node index.js'. Follow on screen prompts to build a team. The resulting html file will be in the 'output' folder
 
 
 
@@ -40,7 +40,7 @@ Adam Riley
 ## License
 MIT License
 
-Copyright (c) [2023] [Adam Riley]
+Copyright (c) [2024] [Adam Riley]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

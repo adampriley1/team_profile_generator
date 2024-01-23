@@ -10,7 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
-// array of questions for user
+// array of questions for mnager
 const initialQuestions = [
   {
     type: "input",
@@ -34,6 +34,7 @@ const initialQuestions = [
   },
 ];
 
+//menu questions to add or exit
 const menu = [
   {
     type: "list",
@@ -92,13 +93,16 @@ const internQuestions = [
 ];
 
 //output data array
-const output = [];
+const allTeamMembers = [];
 
 //Initiilise the programme
 function init() {
   inquirer.prompt(initialQuestions).then((answers) => {
-    output.push(answers);
-    //run selected function to ask menu question
+    //create manager using inquirer inputs 
+   const newManager = new Manager(answers.getName, answers.getId, answers.getEmail, answers.getOfficeNumber);
+   allTeamMembers.push(newManager)
+
+    //run selected function to ask question
     selected();
   });
   // .then(()=> render(output));
@@ -106,14 +110,23 @@ function init() {
 //2nd set of questions based on who is selected
 function selected() {
   inquirer.prompt(menu).then((answers) => {
+    //show engineer Q's if engineer selected
     if (answers.addMore === "Add engineer") {
       engineerQs();
+       //show intern Q's if intern selected
     } else if (answers.addMore === "Add intern") {
       internQs();
     } else if (answers.addMore === "Finish building the team") {
       console.log("Your team profile has been built");
-      console.log(manager);
-      render(output);
+     
+      //write html with output data
+      // render(allTeamMembers);
+
+      fs.writeFile('./output/teamMembers.html', render(allTeamMembers), function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+      });
+
     }
   });
 }
